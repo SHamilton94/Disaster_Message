@@ -5,12 +5,13 @@ import numpy as np
 
 
 def load_data(messages_filepath, categories_filepath):
-	#load messages dataset
+    #load messages dataset
     messages = pd.read_csv('messages.csv')
-	messages.head()
-	# load categories dataset
-	categories = pd.read_csv('categories.csv')
-	categories.head()
+    messages.head()
+    # load categories dataset
+    categories = pd.read_csv('categories.csv')
+    categories.head()
+    return messages, categories
 
 
 def clean_data(df):

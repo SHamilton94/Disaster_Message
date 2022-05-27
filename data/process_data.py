@@ -4,6 +4,9 @@ import re
 import numpy as np
 
 
+
+
+
 def load_data(messages_filepath, categories_filepath):
     #load messages dataset
     messages = pd.read_csv('messages.csv')
@@ -11,13 +14,14 @@ def load_data(messages_filepath, categories_filepath):
     # load categories dataset
     categories = pd.read_csv('categories.csv')
     categories.head()
-    return messages, categories
+    df = messages.merge(categories, how = 'inner', on = 'id')
+    return df
 
 
 def clean_data(df):
     # merge datasets
-    df = messages.merge(categories, how = 'inner', on = 'id')
-    df.head()
+    #df = messages.merge(categories, how = 'inner', on = 'id')
+    #df.head()
     # create a dataframe of the 36 individual category columns
     categories = df['categories'].str.split(";", expand = True)
     categories.head()
@@ -58,10 +62,12 @@ def clean_data(df):
     df.drop_duplicates(inplace = True)
     # check number of duplicates
     print(len(df[df.duplicated()]))
+    return df
 
 
 def save_data(df, database_filename):
     #saves database
+    import sqlalchemy
     from sqlalchemy import create_engine
     engine = create_engine('sqlite:///DisasterMessage.db')
     df.to_sql('DisasterMessage', engine, index=False, if_exists = 'replace')

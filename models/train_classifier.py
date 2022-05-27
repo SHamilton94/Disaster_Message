@@ -74,7 +74,8 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    print(classification_report(y_test, y_pred))
+    for i in range(0, Y_test.shape[1]):
+        print(classification_report(y_test[:i], y_pred[:i]))
 
 
 def save_model(model, model_filepath):

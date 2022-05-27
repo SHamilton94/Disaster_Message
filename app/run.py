@@ -63,7 +63,39 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        }, 
+        {
+             'data': [
+                {
+                 'type': 'pie',
+                 'domain': {
+                     'x': [
+                         0,
+                         1
+                     ],
+                     'y': [ 
+                         0,
+                         1
+                     ]
+                 },
+      "textinfo": "label+value",
+      "labels": [
+          genre_names
+      ],
+      "values": [
+          genre_counts
+      ],
+      "showlegend": false
+    }
+  ],
+  "layout": {
+    "title": "Disaster Response Pipeline",
+    "width": 800,
+    "height": 500,
+    "autosize": false
+  },
+  "frames": []
+}
     ]
     
     # encode plotly graphs in JSON

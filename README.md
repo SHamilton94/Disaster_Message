@@ -1,5 +1,18 @@
 # Disaster Response Pipeline Project
 
+# Summary:
+# The Disaster Response Pipeline Project helps to aid individuals who sent
+# messages sent during various disasters. The ETL pipeline will clean the data, use 
+# a predictive ML model to classify the type of disaster messages sent and received, 
+# deploy to a web app, and provide data visualization 
+
+#File Descriptions:
+# process_data.py prepares and cleans the data to put it in a usable format for the ML model
+# train_classifier.py trains the ML classification model
+# run.py implements the classification model 
+# master.html designs the web app
+# go.html deploys the web app
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 

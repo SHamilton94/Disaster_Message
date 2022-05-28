@@ -67,7 +67,6 @@ def clean_data(df):
 
 def save_data(df, database_filename):
     #saves database
-    import sqlalchemy
     from sqlalchemy import create_engine
     engine = create_engine('sqlite:///DisasterMessage.db')
     df.to_sql('DisasterMessage', engine, index=False, if_exists = 'replace')

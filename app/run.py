@@ -65,38 +65,38 @@ def index():
             }
         }, 
         {
-             'data': [
+            'data': [
                 {
-                 'type': 'pie',
-                 'domain': {
-                     'x': [
-                         0,
-                         1
-                     ],
-                     'y': [ 
-                         0,
-                         1
-                     ]
-                 },
-      "textinfo": "label+value",
-      "labels": [
-          genre_names
-      ],
-      "values": [
-          genre_counts
-      ],
-      "showlegend": false
+                'type': 'pie',
+                'domain': {
+                    'x': [
+                        0,
+                        1
+                    ],
+                    'y': [ 
+                        0,
+                        1
+                    ]
+                },
+            "textinfo": "label+value",
+            "labels": [
+                genre_names
+            ],
+            "values": [
+                genre_counts
+            ],
+            "showlegend": false
+        }
+    ],
+        "layout": {
+        "title": "Disaster Response Pipeline",
+        "width": 800,
+        "height": 500,
+        "autosize": false
+    },
+    "frames": []
     }
-  ],
-  "layout": {
-    "title": "Disaster Response Pipeline",
-    "width": 800,
-    "height": 500,
-    "autosize": false
-  },
-  "frames": []
-}
-    ]
+]
     
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]

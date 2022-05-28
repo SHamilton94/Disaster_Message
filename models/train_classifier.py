@@ -35,11 +35,11 @@ from sklearn.model_selection import train_test_split
 
 def load_data(database_filepath):
     engine = create_engine('sqlite:///DisasterMessage.db')
-	df = pd.read_sql('SELECT * FROM DisasterMessage', engine)
-	df = df.dropna()
-	X = df['message'] 
-	y = df.iloc[:, 4:]
-	y = y.astype('float')
+    df = pd.read_sql('SELECT * FROM DisasterMessage', engine)
+    df = df.dropna()
+    X = df['message'] 
+    y = df.iloc[:, 4:]
+    y = y.astype('float')
 
 
 def tokenize(text):
@@ -55,7 +55,7 @@ def tokenize(text):
 
 
 def build_model():
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = .20, random_state = 42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = .20, random_state = 42)
     pipeline2 = Pipeline([
         ('vect', CountVectorizer(tokenizer = tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -63,14 +63,14 @@ def build_model():
         #('feathash', FeatureHasher()),
         ('clf', MultiOutputClassifier(RandomForestClassifier(n_estimators=10, max_depth=45)))   
     ])
-	pipeline2.fit(X_train, y_train)
-	y_pred = pipeline2.predict(X_test)
-	y_pred = np.array(y_pred)
-	y_test = np.array(y_test)
-	parameters = {
-    	'clf__n_estimators': [300]
-	}
-	cv2 = GridSearchCV(pipeline2, param_grid=parameters)	
+    pipeline2.fit(X_train, y_train)
+    y_pred = pipeline2.predict(X_test)
+    y_pred = np.array(y_pred)
+    y_test = np.array(y_test)
+    parameters = {
+        'clf__n_estimators': [300]
+    }
+    cv2 = GridSearchCV(pipeline2, param_grid=parameters)
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
@@ -80,8 +80,8 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 def save_model(model, model_filepath):
     import pickle 
-	filename = 'Disaster_Pipeline.sav'
-	pickle.dump(pipeline2, open(filename, 'wb'))
+    filename = 'Disaster_Pipeline.sav'
+    pickle.dump(pipeline2, open(filename, 'wb'))
 
 
 def main():

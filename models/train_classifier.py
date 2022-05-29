@@ -43,7 +43,6 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
-    def tokenize(text):
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()

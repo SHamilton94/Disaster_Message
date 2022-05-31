@@ -35,7 +35,7 @@ from sklearn.model_selection import train_test_split
 
 def load_data(database_filepath):
     engine = create_engine('sqlite:///DisasterMessage.db')
-    df = pd.read_sql('SELECT * FROM DisasterMessage', engine)
+    df = pd.read_sql('SELECT * FROM DisasterMessage.db ', engine)
     df = df.dropna()
     X = df['message'] 
     y = df.iloc[:, 4:]

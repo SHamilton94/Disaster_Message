@@ -68,10 +68,8 @@ def clean_data(df):
 def save_data(df, database_filename):
     #saves database
     from sqlalchemy import create_engine
-    engine = create_engine('sqlite:///DisasterMessage.db')
+    engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('DisasterMessage', engine, index=False, if_exists = 'replace')
-    return engine, df
-
 
 def main():
     if len(sys.argv) == 4:

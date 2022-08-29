@@ -40,6 +40,7 @@ def load_data(database_filepath):
     X = df['message'] 
     y = df.iloc[:, 4:]
     y = y.astype('float')
+    return df, X, y
 
 
 def tokenize(text):
